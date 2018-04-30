@@ -61,7 +61,7 @@ public class Student {
     private int landline_number;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="franchise_id", nullable=false)
+    @JoinColumn(name="franchise_id")
     @JsonBackReference
     private Franchise franchise;
 

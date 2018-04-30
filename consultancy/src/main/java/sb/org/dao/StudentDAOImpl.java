@@ -3,10 +3,12 @@ package sb.org.dao;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import sb.org.model.Student;
 
 import java.util.List;
 
+@Repository
 public class StudentDAOImpl implements StudentDAO {
 
     @Autowired
