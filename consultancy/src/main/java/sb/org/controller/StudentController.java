@@ -26,7 +26,7 @@ public class StudentController {
         System.out.println("StudentController()");
     }
 
-    // Get all Students
+    // Get all Student List
     @RequestMapping(value = "allStudents",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Student>> getAllStudents(){
         List<Student> students=studentService.getAllStudents();

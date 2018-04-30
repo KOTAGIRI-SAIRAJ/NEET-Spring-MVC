@@ -31,7 +31,7 @@ public class FranchiseController {
         System.out.println("FranchiseController()");
     }
 
-    // Get all the Franchises List
+    // Get all the Franchise List
     @RequestMapping(value = "allFranchises",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Franchise>> getAllFranchises(){
         List<Franchise> franchiseList = franchiseService.getAllFranchises();
