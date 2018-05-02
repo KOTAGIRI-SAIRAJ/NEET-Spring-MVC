@@ -33,7 +33,7 @@ public class FranchiseController {
 
     // Get all the Franchise List
     @RequestMapping(value = "allFranchises",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Franchise>> getAllFranchises(){
+    public ResponseEntity<List<Franchise>> getAllFranchises() {
         List<Franchise> franchiseList = franchiseService.getAllFranchises();
         System.out.println("franchiseService length " +franchiseService.getAllFranchises().size());
         return ResponseEntity.ok().body(franchiseList);
@@ -41,7 +41,7 @@ public class FranchiseController {
 
     // Add Or Update a Franchise
     @RequestMapping(value = "/franchise/add",method = RequestMethod.POST)
-    public ResponseEntity<Franchise>  addFranchise(@RequestBody Franchise franchise){
+    public ResponseEntity<Franchise>  addFranchise(@RequestBody Franchise franchise) {
         HttpHeaders headers = new HttpHeaders();
         if (franchise.getId() == 0) {
             franchiseService.addFranchise(franchise);
@@ -54,7 +54,7 @@ public class FranchiseController {
 
     // Get a single Franchise
     @RequestMapping(value = "/franchise/{id}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Franchise> getFranchise(@PathVariable("id") int id){
+    public ResponseEntity<Franchise> getFranchise(@PathVariable("id") int id) {
         Franchise franchise=franchiseService.getFranchise(id);
         if (franchise == null) {
             return new ResponseEntity<Franchise>(HttpStatus.NOT_FOUND);
@@ -86,7 +86,7 @@ public class FranchiseController {
             return new ResponseEntity<Franchise>(HttpStatus.NOT_FOUND);
         }
         if(student.getFranchise() != null){
-            return new ResponseEntity<Franchise>(HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<Franchise>(HttpStatus.CONFLICT);
         }
         List<Student> assignedStudents = franchiseService.getFranchise(id).getStudents();
         assignedStudents.add(student);
