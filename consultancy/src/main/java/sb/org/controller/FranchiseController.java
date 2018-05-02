@@ -74,7 +74,7 @@ public class FranchiseController {
     }
 
     // Enroll Student to Franchise
-    /*@RequestMapping(value = "/franchise/{id}/{studentId}",method = RequestMethod.PUT)
+    @RequestMapping(value = "/franchise/{id}/{studentId}",method = RequestMethod.PUT)
     public ResponseEntity<Franchise> approveStudent(@PathVariable("id") int id,@PathVariable("studentId") int studentId) {
         HttpHeaders headers = new HttpHeaders();
         Franchise franchise=franchiseService.getFranchise(id);
@@ -85,11 +85,15 @@ public class FranchiseController {
         if (student == null) {
             return new ResponseEntity<Franchise>(HttpStatus.NOT_FOUND);
         }
+        if(student.getFranchise() != null){
+            return new ResponseEntity<Franchise>(HttpStatus.NOT_ACCEPTABLE);
+        }
         List<Student> assignedStudents = franchiseService.getFranchise(id).getStudents();
         assignedStudents.add(student);
         franchise.setStudents(assignedStudents);
         student.setFranchise(franchise);
         franchiseService.updateFranchise(franchise);
         return new ResponseEntity<Franchise>(headers, HttpStatus.CREATED);
-    }*/
+    }
+
 }
