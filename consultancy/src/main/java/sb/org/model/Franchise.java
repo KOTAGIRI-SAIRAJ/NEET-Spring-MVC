@@ -38,16 +38,16 @@ public class Franchise {
     private String password;
 
     @Column
-    private int phone_number;
+    private String phone_number;
 
     @Column
-    private int landline_number;
+    private String landline_number;
 
     @Column
     private String pan_number;
 
     @Column
-    private int aadhaar_number;
+    private String aadhaar_number;
 
     @Column
     private String lane_one;
@@ -65,7 +65,7 @@ public class Franchise {
     private int zip_code;
 
     @Column
-    private String aadhaar_img;
+    private byte[] aadhaar_img;
 
     @Column
     private String pan_img;
@@ -152,19 +152,19 @@ public class Franchise {
         this.password = password;
     }
 
-    public int getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(int phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 
-    public int getLandline_number() {
+    public String getLandline_number() {
         return landline_number;
     }
 
-    public void setLandline_number(int landline_number) {
+    public void setLandline_number(String landline_number) {
         this.landline_number = landline_number;
     }
 
@@ -176,11 +176,11 @@ public class Franchise {
         this.pan_number = pan_number;
     }
 
-    public int getAadhaar_number() {
+    public String  getAadhaar_number() {
         return aadhaar_number;
     }
 
-    public void setAadhaar_number(int aadhaar_number) {
+    public void setAadhaar_number(String aadhaar_number) {
         this.aadhaar_number = aadhaar_number;
     }
 
@@ -224,11 +224,11 @@ public class Franchise {
         this.zip_code = zip_code;
     }
 
-    public String getAadhaar_img() {
+    public byte[] getAadhaar_img() {
         return aadhaar_img;
     }
 
-    public void setAadhaar_img(String aadhaar_img) {
+    public void setAadhaar_img(byte[] aadhaar_img) {
         this.aadhaar_img = aadhaar_img;
     }
 

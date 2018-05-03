@@ -46,19 +46,19 @@ public class Student {
     private int zip_code;
 
     @Column
-    private int qualification;
+    private String qualification;
 
     @Column
-    private int aadhaar_number;
+    private String aadhaar_number;
 
     @Column
-    private int pan_number;
+    private String pan_number;
 
     @Column
-    private int phone_number;
+    private String phone_number;
 
     @Column
-    private int landline_number;
+    private String landline_number;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="franchise_id")
@@ -161,51 +161,29 @@ public class Student {
         this.zip_code = zip_code;
     }
 
-    public int getQualification() {
-        return qualification;
-    }
-
-    public void setQualification(int qualification) {
-        this.qualification = qualification;
-    }
-
-    public int getAadhaar_number() {
-        return aadhaar_number;
-    }
-
-    public void setAadhaar_number(int aadhaar_number) {
-        this.aadhaar_number = aadhaar_number;
-    }
-
-    public int getPan_number() {
-        return pan_number;
-    }
-
-    public void setPan_number(int pan_number) {
-        this.pan_number = pan_number;
-    }
-
-    public int getPhone_number() {
-        return phone_number;
-    }
-
-    public void setPhone_number(int phone_number) {
-        this.phone_number = phone_number;
-    }
-
-    public int getLandline_number() {
-        return landline_number;
-    }
-
-    public void setLandline_number(int landline_number) {
-        this.landline_number = landline_number;
-    }
-
-    public Franchise getFranchise() {
-        return franchise;
-    }
+    public Franchise getFranchise() { return franchise;  }
 
     public void setFranchise(Franchise franchise) {
         this.franchise = franchise;
     }
+
+    public String getAadhaar_number() { return aadhaar_number; }
+
+    public void setAadhaar_number(String aadhaar_number) { this.aadhaar_number = aadhaar_number;    }
+
+    public String getPan_number() { return pan_number; }
+
+    public void setPan_number(String pan_number) { this.pan_number = pan_number; }
+
+    public String getPhone_number() { return phone_number; }
+
+    public void setPhone_number(String phone_number) { this.phone_number = phone_number;  }
+
+    public String getLandline_number() { return landline_number;  }
+
+    public void setLandline_number(String landline_number) {  this.landline_number = landline_number;  }
+
+    public String getQualification() {  return qualification;  }
+
+    public void setQualification(String qualification) { this.qualification = qualification; }
 }

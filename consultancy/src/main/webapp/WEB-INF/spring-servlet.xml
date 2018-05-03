@@ -17,6 +17,8 @@
 
     <!-- Specifying the Resource location to load JS, CSS, Images etc -->
     <mvc:resources mapping="/resources/**" location="/resources/" />
+    <!--Images location-->
+    <mvc:resources mapping="/resources/images" location="/resources/images" />
 
     <!-- View Resolver -->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

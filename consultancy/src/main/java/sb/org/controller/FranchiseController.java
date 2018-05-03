@@ -12,6 +12,8 @@ import sb.org.model.Student;
 import sb.org.service.FranchiseService;
 import sb.org.service.StudentService;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
@@ -41,9 +43,15 @@ public class FranchiseController {
 
     // Add Or Update a Franchise
     @RequestMapping(value = "/franchise/add",method = RequestMethod.POST)
-    public ResponseEntity<Franchise>  addFranchise(@RequestBody Franchise franchise) {
+    public ResponseEntity<Franchise>  addFranchise(@RequestBody Franchise franchise) throws IOException {
         HttpHeaders headers = new HttpHeaders();
         if (franchise.getId() == 0) {
+            File file = new File("/home/sematicbits/Desktop/ecn.png");
+            byte[] bFile = new byte[(int) file.length()];
+            FileInputStream fileInputStream = new FileInputStream(file);
+            fileInputStream.read(bFile);
+            fileInputStream.close();
+            franchise.setAadhaar_img(bFile);
             franchiseService.addFranchise(franchise);
             return new ResponseEntity<Franchise>(headers, HttpStatus.CREATED);
         } else {
