@@ -15,8 +15,10 @@ import sb.org.service.StudentService;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Iterator;
 import java.util.List;
+
 
 @RestController
 public class FranchiseController {
@@ -46,7 +48,9 @@ public class FranchiseController {
     public ResponseEntity<Franchise>  addFranchise(@RequestBody Franchise franchise) throws IOException {
         HttpHeaders headers = new HttpHeaders();
         if (franchise.getId() == 0) {
-            File file = new File("/home/sematicbits/Desktop/ecn.png");
+            /*File file = new File("/home/sematicbits/Desktop/ecn.png");*/
+            File file = new File("/home/sematicbits/IdeaProjects/NEET-Spring-MVC/consultancy/src/main/resources/images/ecn.png");
+            /*File file = new File("../resources/images/ecn.png");*/
             byte[] bFile = new byte[(int) file.length()];
             FileInputStream fileInputStream = new FileInputStream(file);
             fileInputStream.read(bFile);
@@ -64,6 +68,11 @@ public class FranchiseController {
     @RequestMapping(value = "/franchise/{id}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Franchise> getFranchise(@PathVariable("id") int id) {
         Franchise franchise=franchiseService.getFranchise(id);
+
+        // Converts the Binary Code to Base 64 Code
+        /*byte[] imagebytecode =  franchise.getAadhaar_img();
+        System.out.println(com.sun.org.apache.xerces.internal.impl.dv.util.Base64.encode(imagebytecode));*/
+
         if (franchise == null) {
             return new ResponseEntity<Franchise>(HttpStatus.NOT_FOUND);
         }
@@ -86,11 +95,11 @@ public class FranchiseController {
     public ResponseEntity<Franchise> approveStudent(@PathVariable("id") int id,@PathVariable("studentId") int studentId) {
         HttpHeaders headers = new HttpHeaders();
         Franchise franchise=franchiseService.getFranchise(id);
-        if (franchise == null) {
+        /*if () {
             return new ResponseEntity<Franchise>(HttpStatus.NOT_FOUND);
-        }
+        }*/
         Student student = studentService.getStudent(studentId);
-        if (student == null) {
+        if (student == null || franchise == null) {
             return new ResponseEntity<Franchise>(HttpStatus.NOT_FOUND);
         }
         if(student.getFranchise() != null){
